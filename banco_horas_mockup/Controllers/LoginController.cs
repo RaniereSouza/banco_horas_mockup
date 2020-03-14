@@ -8,9 +8,11 @@ namespace banco_horas_mockup.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Login
+        // GET: /Login
         public ActionResult Index()
         {
+            ViewBag.Message = "Faça seu login:";
+
             return View();
         }
     }

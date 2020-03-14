@@ -8,11 +8,13 @@ namespace banco_horas_mockup.Controllers
 {
     public class HomeController : Controller
     {
+        // GET: /, /Home
         public ActionResult Index()
         {
             return View();
         }
 
+        // GET: /Home/About
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -20,6 +22,7 @@ namespace banco_horas_mockup.Controllers
             return View();
         }
 
+        // GET: /Home/Contact
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
