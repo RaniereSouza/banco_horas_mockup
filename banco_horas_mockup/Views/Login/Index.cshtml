@@ -1,15 +1,24 @@
 ﻿@{
     ViewBag.Title = "Login";
+    ViewBag.Message = "Faça seu login:";
     @Styles.Render("~/Content/Login.css");
 }
 
 <div class="container" id="login-page">
     <h2>@ViewBag.Title.</h2>
-    <form class="col-md-4 form-group">
-        <p class="text-center form-title">@ViewBag.Message</p>
-        <input type="text" placeholder="Login" class="form-control" />
-        <input type="password" placeholder="Senha" class="form-control" />
-        <button type="submit" class="form-control btn btn-success">Entrar</button>
-    </form>
+    @using (Html.BeginForm("HandleLogin", "Login", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="col-md-4 form-group form-container">
+            <p class="text-center form-title">@ViewBag.Message</p>
+            <input type="text" id="login" name="login" placeholder="Login" class="form-control" />
+            <input type="password" id="senha" name="senha" placeholder="Senha" class="form-control" />
+            <button type="submit" class="form-control btn btn-success">Entrar</button>
+            @if (null != ViewBag.ErrorMessage)
+            {
+                <p class="error-message">@ViewBag.ErrorMessage.</p>
+            }
+        </div>
+    }
 </div>
 

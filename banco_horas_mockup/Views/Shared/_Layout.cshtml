@@ -26,7 +26,15 @@
                         <li>@Html.ActionLink("Contato", "Contact", "Home")</li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li>@Html.ActionLink("Entrar", "Index", "Login")</li>
+                        @if (null == Session["loggedIn"] || true != (bool)Session["loggedIn"])
+                        {
+                            <li>@Html.ActionLink("Entrar", "Index", "Login")</li>
+                        }
+                        else
+                        {
+                            <li><a>Olá, @Session["username"]</a></li>
+                            <li>@Html.ActionLink("Sair", "HandleLogout", "Login")</li>
+                        }
                     </ul>
                 </div>
             </div>
